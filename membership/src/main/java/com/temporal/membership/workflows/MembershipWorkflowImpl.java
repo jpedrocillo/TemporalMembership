@@ -8,19 +8,23 @@ import io.temporal.workflow.Workflow;
 
 import java.time.Duration;
 
-public class WorkflowMembershipImpl implements WorkflowMembership {
+public class MembershipWorkflowImpl implements MembershipWorkflow {
+
+    String status;
 
     private final RetryOptions retryoptions = RetryOptions.newBuilder()
             .setInitialInterval(Duration.ofSeconds(1))
             .setMaximumInterval(Duration.ofSeconds(10))
             .setBackoffCoefficient(2)
-            .setMaximumAttempts(2).build();
+            .setMaximumAttempts(2)
+            .build();
 
     private final ActivityOptions options = ActivityOptions.newBuilder()
             .setStartToCloseTimeout(Duration.ofSeconds(10))
             .setHeartbeatTimeout(Duration.ofSeconds(2))
             .setScheduleToCloseTimeout(Duration.ofSeconds(5))
-            .setRetryOptions(retryoptions).build();
+            .setRetryOptions(retryoptions)
+            .build();
 
     //set the retry option on the activity
     private final MembershipActivity activity = Workflow.newActivityStub(MembershipActivity.class, options);
@@ -72,4 +76,10 @@ public class WorkflowMembershipImpl implements WorkflowMembership {
         }
 
     }
+
+    @Override
+    public String getStatus() {
+        return status;
+    }
+
 }

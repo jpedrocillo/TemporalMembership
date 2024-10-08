@@ -21,7 +21,7 @@ public class MembershipActivityImpl implements MembershipActivity {
 
         if (!activityShouldSucceed) {
             System.out.println("[Failed] Membership Verification failed.");
-            System.out.flush();
+            //System.out.flush();
             throw Activity.wrap(new RuntimeException("Simulated Activity error on setVerification."));
         }
         System.out.println("**** Membership Registration is verified.");
@@ -33,7 +33,7 @@ public class MembershipActivityImpl implements MembershipActivity {
 
         if (!activityShouldSucceed) {
             System.out.println("[Failed] Membership Account Creation failed.");
-            System.out.flush();
+            //System.out.flush();
             throw Activity.wrap(new RuntimeException("Simulated Activity error on setMemberAccount."));
         }
         System.out.println("**** Account created for the Membership Registration.");
@@ -46,7 +46,7 @@ public class MembershipActivityImpl implements MembershipActivity {
 
         if (!activityShouldSucceed) {
             System.out.println("[Failed] Notify Membership Account Complete process failed.");
-            System.out.flush();
+            //System.out.flush();
             throw Activity.wrap(new RuntimeException("Simulated Activity error on setCompleteMembership."));
         }
         System.out.println("**** Membership Registration complete, sending email now to the member.");

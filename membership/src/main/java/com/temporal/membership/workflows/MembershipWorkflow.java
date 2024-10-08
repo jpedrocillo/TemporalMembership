@@ -1,12 +1,13 @@
 package com.temporal.membership.workflows;
 
 import com.temporal.membership.model.MembershipDto;
+import io.temporal.workflow.QueryMethod;
 import io.temporal.workflow.SignalMethod;
 import io.temporal.workflow.WorkflowInterface;
 import io.temporal.workflow.WorkflowMethod;
 
 @WorkflowInterface
-public interface WorkflowMembership {
+public interface MembershipWorkflow {
 
     public static final String QUEUE_NAME = "Membership_Registration";
     public static final String WF_ID_NAME = "Membership_Registration_";
@@ -23,4 +24,6 @@ public interface WorkflowMembership {
     @SignalMethod
     void completeMembershipSignal();
 
+    @QueryMethod
+    String getStatus();
 }

@@ -1,8 +1,6 @@
 package com.temporal.membership.configurations;
 
-import com.temporal.membership.activities.AccountActivationActivity;
 import com.temporal.membership.activities.AccountActivationActivityImpl;
-import com.temporal.membership.activities.MembershipActivity;
 import com.temporal.membership.activities.MembershipActivityImpl;
 import io.temporal.client.WorkflowClient;
 import io.temporal.client.WorkflowClientOptions;
@@ -16,7 +14,7 @@ public class TemporalConfig {
 
     private String temporalServiceAddress = "127.0.0.1:7233";
 
-    private String temporalNameSpace= "default";
+    private String temporalNameSpace= "louie";
 
     final private WorkflowClientOptions options = WorkflowClientOptions.newBuilder()
             .setNamespace(temporalNameSpace)
@@ -30,8 +28,8 @@ public class TemporalConfig {
     @Bean
     public WorkflowClient workflowClient(WorkflowServiceStubs service){
 
-        //return WorkflowClient.newInstance(service, options);
-        return WorkflowClient.newInstance(service);
+        return WorkflowClient.newInstance(service, options);
+        //return WorkflowClient.newInstance(service);
     }
 
     @Bean

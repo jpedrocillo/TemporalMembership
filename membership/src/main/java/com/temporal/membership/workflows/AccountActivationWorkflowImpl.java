@@ -7,7 +7,7 @@ import io.temporal.workflow.Workflow;
 
 import java.time.Duration;
 
-public class WorkflowAccountActivationImpl implements  WorkflowAccountActivation{
+public class AccountActivationWorkflowImpl implements AccountActivationWorkflow {
 
     private final RetryOptions retryoptions = RetryOptions.newBuilder()
             .setInitialInterval(Duration.ofSeconds(1))
